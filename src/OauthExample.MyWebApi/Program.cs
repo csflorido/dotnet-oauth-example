@@ -2,6 +2,7 @@
 using Microsoft.OpenApi.Models;
 using OauthExample.MyWebApi.Config;
 using OauthExample.MyWebApi.Services;
+using System.Reflection;
 
 namespace OauthExample.MyWebApi;
 
@@ -42,6 +43,10 @@ public class Program
                     new string[] {}
                 }
             });
+
+            var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
+            var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
+            options.IncludeXmlComments(xmlPath);
         });
 
         var configuration = _GetConfiguration();

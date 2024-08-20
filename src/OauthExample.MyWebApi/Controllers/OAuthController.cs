@@ -17,7 +17,15 @@ namespace OauthExample.MyWebApi.Controllers
             _authService = authService;
         }
 
+        /// <summary>
+        /// Get Bearer Token
+        /// </summary>
+        /// <param name="request"></param>
+        /// <returns></returns>
         [HttpPost("token")]
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(TokenResponse))]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         public IActionResult GetBearerToken([FromBody]TokenRequest request)
         {
             try

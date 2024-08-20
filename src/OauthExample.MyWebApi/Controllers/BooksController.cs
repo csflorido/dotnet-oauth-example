@@ -11,7 +11,13 @@ namespace OauthExample.MyWebApi.Controllers
     {
         public BooksController() { }
 
+        /// <summary>
+        /// Fetch books
+        /// </summary>
+        /// <returns></returns>
         [HttpGet]
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(IEnumerable<Book>))]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         public IActionResult Fetch()
         {
             var books = new List<Book>()
